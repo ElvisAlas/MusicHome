@@ -8,10 +8,10 @@ function Menu() {
   const [cancion, setCancion] = useState('');
 
   useEffect(() => {
-    // Realizar una solicitud HTTP utilizando Axios para obtener los datos del usuario
+   
     axios.get('https://reqres.in/api/users/5')
       .then(response => {
-        setUserData(response.data.data); // Actualizar el estado con los datos del usuario
+        setUserData(response.data.data);
       })
       .catch(error => {
         console.error('Error fetching user data:', error);

@@ -11,9 +11,9 @@ function Login() {
 
   return (
     <div className="login">
-      <div className="login-content"> {/* Contenedor para centrar el contenido */}
+      <div className="login-content"> 
         <h1>Bienvenido a nuestra aplicación</h1>
-        <p>Por favor, inicia sesión para continuar</p>
+        <h4>Por favor, inicia sesión para continuar</h4>
         <button onClick={handleLoginClick}>Login</button>
       </div>
     </div>

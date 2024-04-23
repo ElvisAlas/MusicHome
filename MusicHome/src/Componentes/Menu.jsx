@@ -48,7 +48,9 @@ function Menu() {
 
     try {
       const response = await axios.request(options);
+      console.log(response.data)
       setCanciones(response.data.tracks.items);
+    
     } catch (error) {
       console.error(error);
     }

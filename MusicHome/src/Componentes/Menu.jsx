@@ -37,7 +37,7 @@ function Menu() {
         q: cancion,
         type: 'multi',
         offset: '0',
-        limit: '10',
+        limit: '5',
         numberOfTopResults: '5'
       },
       headers: {

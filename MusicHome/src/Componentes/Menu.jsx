@@ -8,7 +8,7 @@ function Menu() {
   const [cancion, setCancion] = useState('');
 
   useEffect(() => {
-   
+
     axios.get('https://reqres.in/api/users/5')
       .then(response => {
         setUserData(response.data.data);
@@ -58,7 +58,7 @@ function Menu() {
     <>
       <nav className="navbar">
         <div className="logo">
-       
+
           <div className="user-info">
             {userData && (
               <>
@@ -71,11 +71,17 @@ function Menu() {
         </div>
         <form onSubmit={handleSearch}>
           <span className="buscar">Buscar Cancion</span>
-          <input type="text" value={cancion} onChange={e => setCancion(e.target.value)} />
+          <input
+            type="text"
+            value={cancion}
+            onChange={e => setCancion(e.target.value)}
+            className="form-control"
+           
+          />
           <button type='submit'>Buscar</button>
         </form>
       </nav>
-  
+
       <div className="Main">
         <table>
           <thead>
@@ -87,10 +93,10 @@ function Menu() {
             </tr>
           </thead>
           <tbody>
- 
+
             {canciones.map((cancion, index) => (
               <tr key={index}>
-                <td><img src={cancion.data.albumOfTrack.coverArt.sources[0].url} alt="Album Cover"   className="album-cover"/></td>
+                <td><img src={cancion.data.albumOfTrack.coverArt.sources[0].url} alt="Album Cover" className="album-cover" /></td>
                 <td className="cancion">{cancion.data.name} </td>
                 <td className="cancion">{cancion.data.artists.items[0].profile.name} </td>
                 <td><a href={cancion.data.uri}><button className='PlayButton'>Escuchar en Spoty</button></a></td>

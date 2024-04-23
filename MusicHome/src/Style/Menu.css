@@ -147,3 +147,10 @@ p:hover {
   font-weight: bold; 
   font-size: 12px; 
 }
+
+.form-control{
+  border-radius: 25px;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}

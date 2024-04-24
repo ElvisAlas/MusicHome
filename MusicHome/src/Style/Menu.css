@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Nunito+Sans:opsz,wght@6..12,200&display=swap");
 
- /* html {
-  margin-top: 20px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/fondo.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
-} */
 html, body {
   margin: 0;
   padding: 0;

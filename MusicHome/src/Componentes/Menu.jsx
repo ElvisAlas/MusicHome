@@ -1,13 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import useUserData from '../Hooks/useUserData';
 import useSearch from '../Hooks/useSearch'
 import useSongData from '../Hooks/useSongData';
+import ArtistModal from './ArtistModal'
 import '../Style/Menu.css';
 
 function Menu() {
   const userData = useUserData();
   const [cancion, setCancion, handleSearch, canciones] = useSearch(useSongData);
+  const [selectedArtist, setSelectedArtist] = useState(null); 
+
+  const handleArtistClick = (artistInfo) => {
+    setSelectedArtist(artistInfo);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedArtist(null);
+  };
 
   return (
     <>
@@ -55,9 +65,11 @@ function Menu() {
                   <td className="cancion">{cancion.data.name}</td>
                   <td className="cancion">{cancion.data.artists.items[0].profile.name}</td>
                   <td>
-                    <a href={cancion.data.uri}>
-                      <button className='PlayButton'>Escuchar en Spoty</button>
-                    </a>
+              
+                      <button className='PlayButton' onClick={() => handleArtistClick(cancion.data)}>
+                        Ver
+                      </button>
+            
                   </td>
                 </tr>
               ))}
@@ -65,6 +77,13 @@ function Menu() {
           </table>
         ) : (
           <h2 className="vacio">No hay canciones para mostrar</h2>
+        )}
+
+        {selectedArtist && (
+          <ArtistModal
+            artistInfo={selectedArtist}
+            onClose={handleCloseModal}
+          />
         )}
       </div>
     </>

@@ -23,8 +23,9 @@ function useSongData() {
 
     try {
       const response = await axios.request(options);
-      console.log(response)
-      setCanciones(response.data.tracks.items);
+        console.log(response.data.albums)
+       setCanciones(response.data.tracks.items);
+      //setCanciones(response.data.albums);
     
     } catch (error) {
       console.error(error);

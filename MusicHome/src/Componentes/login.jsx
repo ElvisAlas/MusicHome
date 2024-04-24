@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Style/Login.css'; // Importa el archivo CSS para los estilos del componente
+import '../Style/Login.css';
 
 function Login() {
   const navigate = useNavigate();
   
   const handleLoginClick = () => {
     navigate('/menu');
+   // navigate('/album');
   };
 
   return (

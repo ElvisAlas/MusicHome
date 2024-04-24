@@ -1,66 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../Style/Menu.css'
+
+import React from 'react';
+import useUserData from '../Hooks/useUserData';
+import useSearch from '../Hooks/useSearch'
+import useSongData from '../Hooks/useSongData';
+import '../Style/Menu.css';
 
 function Menu() {
-  const [userData, setUserData] = useState(null);
-  const [canciones, setCanciones] = useState([]);
-  const [cancion, setCancion] = useState('');
-
-  useEffect(() => {
-
-    axios.get('https://reqres.in/api/users/5')
-      .then(response => {
-        setUserData(response.data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
-  }, []);
-
-  function handleSearch(e) {
-    e.preventDefault();
-    if (cancion.trim() === '') {
-      alert('Debes ingresar algo');
-      return;
-    }
-
-    getSong(cancion);
-    setCancion('');
-  }
-
-  async function getSong(cancion) {
-    const options = {
-      method: 'GET',
-      url: 'https://spotify23.p.rapidapi.com/search/',
-      params: {
-        q: cancion,
-        type: 'multi',
-        offset: '0',
-        limit: '9',
-        numberOfTopResults: '5'
-      },
-      headers: {
-        'X-RapidAPI-Key': '828576eb76msh46d8fef1b694bdbp1d7ffbjsn3c9327155e08',
-        'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-      }
-    };
-
-    try {
-      const response = await axios.request(options);
-      console.log(response.data)
-      setCanciones(response.data.tracks.items);
-    
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const userData = useUserData();
+  const [cancion, setCancion, handleSearch, canciones] = useSearch(useSongData);
 
   return (
     <>
       <nav className="navbar">
         <div className="logo">
-
           <div className="user-info">
             {userData && (
               <>
@@ -78,7 +30,6 @@ function Menu() {
             value={cancion}
             onChange={e => setCancion(e.target.value)}
             className="form-control"
-
           />
           <button type='submit'>Buscar</button>
         </form>
@@ -116,9 +67,9 @@ function Menu() {
           <h2 className="vacio">No hay canciones para mostrar</h2>
         )}
       </div>
-
     </>
   );
 }
+
 
 export default Menu;

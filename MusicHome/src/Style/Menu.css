@@ -141,11 +141,12 @@ p:hover {
 .Main td {
   padding: 8px;
   text-align: center;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+ 
 }
 
 .Main th {
-  background-color: #f2f2f2;
+  background-color: #0a0a0a;
 }
 
 .PlayButton {
@@ -159,6 +160,7 @@ p:hover {
   text-align: center; 
   font-weight: bold; 
   font-size: 12px; 
+  color: black;
 }
 
 .form-control{
